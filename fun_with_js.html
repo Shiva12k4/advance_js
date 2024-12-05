@@ -1,9 +1,55 @@
-function init() {
-  var name = "Mozilla"; 
-  function displayName() {
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+//     function init() {
+//   let  name = "Mozilla"; 
+//   function displayName() {
     
-    console.log(name); 
+//     console.log(name); 
+//   }
+//   displayName();
+// }
+// init();
+
+   function Outer(){
+    let userName="shivam";
+    function Inner(){
+      console.log("inner",userName);//lexical scoping-->, this console shows inner fn can access the value of outer fn variable.
+      
+    }
+    Inner()
+    console.log("Outer",userName);
+   }
+   Outer()
+   //console.log("too Outer",userName); error
+   
+
+   //lexical scoping works only from parent to child.
+   //not child to parent or parent to parent(bhai bhai ) or child to child(bhai bhai )
+
+
+
+   //closure
+
+   function makeFunc() {
+  const name = "Mozilla";
+  function displayName() {
+    console.log(name);
   }
-  displayName();
+  return displayName;// it not only return scope, it return lexical scope , i.e content of its parent also
 }
-init();
+
+const myFunc = makeFunc();
+myFunc();
+
+  </script>
+</body>
+</html>
+
+
